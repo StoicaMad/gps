@@ -99,11 +99,11 @@ static float mapf(float x,float in_min,float in_max,float out_min,float out_max)
   if (x<in_min) x=in_min; if (x>in_max) x=in_max;
   return out_min + (x-in_min)*(out_max-out_min)/(in_max-in_min);
 }
-*/
+
 long map(long x, long in_min, long in_max, long out_min, long out_max) {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
-
+*/
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -120,7 +120,7 @@ float motor_pwm = 0;
 float rudder_deg = 0, target_sog = 0;
 float cog_std = 999.0f;
 GNSSFix fix;
-int16_t rudder_offset_us = 0;
+float rudder_offset_us = 0;
 /* USER CODE END 0 */
 
 /**
@@ -323,6 +323,7 @@ int main(void)
                          fix.sog_mps, fix.cog_deg, cog_std,
                          driveProfile,
                          &rudder_offset_us, &target_sog);
+
 
                  // Servo pentru retur
                  servo_us = 1500 + (int16_t)rudder_offset_us;
